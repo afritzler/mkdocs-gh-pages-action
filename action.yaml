@@ -1,0 +1,12 @@
+name: 'Mkdocs Github Pages Releaser'
+description: 'Host Mkdocs projects as a Github page'
+author: 'Andreas Fritzler, andreas.fritzler@gma1l.com'
+runs:
+  using: "composite"
+  steps:
+    - name: Setup mkdocs
+      run: ${{ github.action_path }}/setup.sh
+      shell: bash
+    - name: Publish mkdocs
+      run: ${{ github.action_path }}/action.sh
+      shell: bash
