@@ -5,7 +5,7 @@ runs:
   using: "composite"
   steps:
     - name: Setup mkdocs
-      run: ${{ github.action_path }}/setup.sh
+      run: pip install --no-cache-dir -r "${{ github.action_path }}/requirements.txt"
       shell: bash
     - name: Publish mkdocs
       run: ${{ github.action_path }}/action.sh
