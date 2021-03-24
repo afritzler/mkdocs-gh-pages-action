@@ -2,5 +2,4 @@
 
 set -e
 
-pip install mkdocs-material
-pip install mkdocs-same-dir
+pip install mkdocs-material==7.0.6
