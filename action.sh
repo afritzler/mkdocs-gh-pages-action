@@ -38,18 +38,8 @@ elif [ -n "${PERSONAL_TOKEN}" ]; then
     remote_repo="https://x-access-token:${PERSONAL_TOKEN}@${GITHUB_DOMAIN:-github.com}/${GITHUB_REPOSITORY}.git"
 fi
 
-if [ -n "${ACTOR}" ]; then
-    actor="${ACTOR}"
-else
-    actor="${GITHUB_ACTOR}"
-fi
-
-if ! git config --get user.name; then
-    git config --global user.name "${actor}"
-fi
-
 if ! git config --get user.email; then
-    git config --global user.email "${actor}@users.noreply.${GITHUB_DOMAIN:-github.com}"
+    git config --global user.email "${ACTOR:-${GITHUB_ACTOR}}@users.noreply.${GITHUB_DOMAIN:-github.com}"
 fi
 
 git remote rm origin
