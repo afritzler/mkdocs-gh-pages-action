@@ -2,4 +2,4 @@
 
 set -e
 
-pip install mkdocs-material==7.0.6
+pip install --no-cache-dir -r "${GITHUB_WORKSPACE}/requirements.txt"
