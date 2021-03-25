@@ -1,5 +1,7 @@
 # mkdocs-gh-pages-action
 
+![license](https://img.shields.io/github/license/afritzler/mkdocs-gh-pages-action)
+
 Github Action to build and release mkdocs as Github pages without using Docker.
 
 ## Usage
