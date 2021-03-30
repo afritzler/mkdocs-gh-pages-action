@@ -1,6 +1,9 @@
 name: 'Mkdocs Github Pages Releaser'
 description: 'Host Mkdocs projects as a Github page'
 author: 'Andreas Fritzler, andreas.fritzler@gma1l.com'
+branding:
+  icon: 'book'
+  color: 'blue'
 runs:
   using: "composite"
   steps:
