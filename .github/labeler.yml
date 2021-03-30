@@ -14,4 +14,4 @@ bash:
 - any: ['*.sh']
 
 yaml:
-- any: ['*.yaml']
+- any: ['*.yml']
