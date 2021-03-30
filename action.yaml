@@ -1,5 +1,5 @@
-name: 'Mkdocs Github Pages Releaser'
-description: 'Host Mkdocs projects as a Github page'
+name: 'MkDocs Github Pages Releaser'
+description: 'Serve your MkDocs as Github pages'
 author: 'Andreas Fritzler, andreas.fritzler@gma1l.com'
 branding:
   icon: 'book'
