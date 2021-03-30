@@ -59,3 +59,26 @@ This action can be configured by setting the following `env` varibles
 | **PERSONAL_TOKEN** | `none`                | Personal access token which should be used during execution.                                      |
 | **GITHUB_DOMAIN**  | `github.com`          | Specify a custom Github domain in case Github Enterprise is used: e.g. `github.myenterprise.com`. |
 | **ACTOR**          | `author of PR/commit` | Overwrite the author of the PR/commit.                                                            |
+| **REQUIREMENTS**   | `requirements.txt`    | Specify a custom `requirements.txt` file to use custom Python modules.                            |
+
+## Using custom modules
+
+By default this action is looking for the presents of a `requirements.txt` in your project to install your custom modules.
+
+Example: Lets say you want to install the following modules as they represent Mkdocs plugins used by your project:
+
+```shell
+mkdocs-same-dir==v0.1.0
+mdx_truly_sane_lists==1.2
+```
+
+Create a corresponding file containing a versioned list of those modules (`pip freeze`). You can override the default filename `requirements.txt` by
+setting the `REQUIREMENTS` environment variable.
+
+```yaml
+      - name: Deploy docs
+        uses: afritzler/mkdocs-gh-pages-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REQUIREMENTS: myawesome-requirements.txt
+```
