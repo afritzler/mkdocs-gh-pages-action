@@ -1,0 +1,17 @@
+documentation:
+- any: ['*.md']
+
+gitflow:
+- any: ['.github/*']
+
+dependencies:
+- requirements.txt
+
+python:
+- requirements.txt
+
+bash:
+- any: ['*.sh']
+
+yaml:
+- any: ['*.yaml']
