@@ -60,6 +60,7 @@ This action can be configured by setting the following `env` varibles
 | **GITHUB_DOMAIN**  | `github.com`          | Specify a custom Github domain in case Github Enterprise is used: e.g. `github.myenterprise.com`. |
 | **ACTOR**          | `author of PR/commit` | Overwrite the author of the PR/commit.                                                            |
 | **REQUIREMENTS**   | `requirements.txt`    | Specify a custom `requirements.txt` file to use custom Python modules.                            |
+| **FORCE**          | `"true"`              | Force defines if the `mkdocs` build artefacts should be force pushed into the `gh-pages` |
 
 ## Using custom modules
 
@@ -76,9 +77,9 @@ Create a corresponding file containing a versioned list of those modules (`pip f
 setting the `REQUIREMENTS` environment variable.
 
 ```yaml
-      - name: Deploy docs
-        uses: afritzler/mkdocs-gh-pages-action@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REQUIREMENTS: myawesome-requirements.txt
+- name: Deploy docs
+  uses: afritzler/mkdocs-gh-pages-action@main
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    REQUIREMENTS: myawesome-requirements.txt
 ```
