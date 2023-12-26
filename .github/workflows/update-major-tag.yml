@@ -1,0 +1,26 @@
+---
+name: Update Major Version Tag
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  update-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Extract major version and update tag
+        run: |
+          # Extract the major version from the tag
+          TAG_NAME="${GITHUB_REF/refs\/tags\//}"
+          MAJOR_VERSION=$(echo "$TAG_NAME" | grep -oP '^v?\K\d+')
+
+          # Set the major version tag to the current release
+          git config --local user.email "afritzler@skiff.com"
+          git config --local user.name "Andreas Fritzler"
+          git tag -fa "v$MAJOR_VERSION" -m "Update major version tag to $TAG_NAME"
+          git push origin ":refs/tags/v$MAJOR_VERSION"
+          git push origin "v$MAJOR_VERSION"
