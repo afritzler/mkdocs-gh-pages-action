@@ -1,27 +1,23 @@
 ---
-name: Update Major Version Tag
+name: Move Major Release Tag
 
 on:
   release:
-    types: [created]
-  workflow_dispatch:
+    types:
+    - published
 
 jobs:
-  update-tag:
+  movetag:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-      - name: Extract major version and update tag
-        run: |
-          # Extract the major version from the tag
-          TAG_NAME="${GITHUB_REF/refs\/tags\//}"
-          MAJOR_VERSION=$(echo "$TAG_NAME" | grep -oP '^v?\K\d+')
-
-          # Set the major version tag to the current release
-          git config --local user.email "afritzler@skiff.com"
-          git config --local user.name "Andreas Fritzler"
-          git tag -fa "v$MAJOR_VERSION" -m "Update major version tag to $TAG_NAME"
-          git push origin ":refs/tags/v$MAJOR_VERSION"
-          git push origin "v$MAJOR_VERSION"
+    - name: Get major version num and update tag
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/}
+        MAJOR=${VERSION%%.*}
+        git config --global user.name 'Andreas Fritzler'
+        git config --global user.email 'afritzler@users.noreply.github.com'
+        git tag -fa ${MAJOR} -m "Update major version tag"
+        git push origin ${MAJOR} --force
